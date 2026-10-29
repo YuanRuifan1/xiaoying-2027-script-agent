@@ -28,6 +28,7 @@
       "seconds": 5
     }
   ],
+  "is_initial_draft_estimate": true,
   "total_seconds": 5,
   "target_seconds": 30,
   "passed": true,

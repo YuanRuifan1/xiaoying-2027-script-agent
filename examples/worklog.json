@@ -1,0 +1,15 @@
+{
+  "started_at": "2026-10-29T07:56:38+00:00",
+  "checkpoint_at": "2026-10-29T13:16:39.226663+00:00",
+  "wall_elapsed_minutes": 320.0,
+  "timezone": "Asia/Shanghai (UTC+08:00)",
+  "scope": "从项目搭建开始到交付检查的实际历时，包含对话、授权等待和执行中断；不代表净开发工时或候选人个人投入。",
+  "candidate_personal_minutes": null,
+  "candidate_note": "请候选人在独立审阅与复现后补充个人实际用时。",
+  "unfinished": [
+    "任意自由文案语义核验",
+    "真实配音时长测量",
+    "候选人独立审阅和复现",
+    "免费模型限流下的超时修订真实成功验证"
+  ]
+}

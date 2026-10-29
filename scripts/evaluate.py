@@ -41,5 +41,10 @@ rows.extend(["", "## 失败与限制", "",
              "免费模型出现过 HTTP 429（服务返回代码 1305），旧版免费模型也出现过普通文本代替函数调用。有限重试不能保证服务可用。真实样例不是稳定成功率测量，未在大量独立样本上评估。", "",
              "修正包括：对遗漏来源 ID 的问题返回精确匹配候选；批准的安全标题允许用作旁白/字幕；每次修改使检查失效。新检查结果不能追溯性地改写旧运行文件。", "",
              "文案采用允许列表和逐字事实匹配；检索为关键词，时长为规则估算。没有任意自然语言事实校验、真实配音测量、UI、视频制作或线上部署。候选人独立复现情况见 AI 使用记录。", ""])
+rows.extend(["## 其他有效证据", "",
+             "无素材场景的一次较早真实运行成功返回 needs_input：[结果](../examples/runs/glm47_attempt/no_material/result.json) / [Trace](../examples/runs/glm47_attempt/no_material/trace.jsonl)。模型先检索，观察到零条资料后请求补充。后续同输入仍可能遭遇服务限流，上表如实列出最近一次结果。", "",
+             "`examples/runs/glm/over_duration_preemptive_edit/` 是模型先修改后检查的旧运行，不能单独证明超时反馈后的修订。最终代码已要求先观察初稿，后续复现请看上表 over_duration 的实际步骤。", "",
+             "较早的真实超时反馈路径：[结果](../examples/runs/glm/over_duration_429_failure/result.json) / [Trace](../examples/runs/glm/over_duration_429_failure/trace.jsonl)。工具依次返回 44、34、31 秒，模型确实据反馈修订，但仍未满足 30 秒上限，随后因模型服务限流明确失败。最终三次有界复测也保留在 over_duration_final_attempt_1..3，不声称超时修订已获得真实成功验证。", "",
+             "干净代码副本的 [复现报告](../examples/test-results/clean-reproduction.json) 包含被验证的代码 commit、测试数量和离线 CLI 结果。实际用时记录见 [worklog.json](../examples/worklog.json)。", ""])
 (ROOT / "docs/03-evaluation.md").write_text("\n".join(rows), encoding="utf-8")
 print("Updated docs/03-evaluation.md from saved evidence")

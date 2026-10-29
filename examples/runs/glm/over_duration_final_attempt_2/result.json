@@ -1,0 +1,125 @@
+{
+  "provider": "real",
+  "model": "glm-4.7-flash",
+  "started_at": "2026-10-29T13:14:27.727756+00:00",
+  "max_tool_calls": 16,
+  "input": {
+    "theme": "字幕编辑",
+    "audience": "新手创作者",
+    "platform": "短视频平台",
+    "target_seconds": 30,
+    "style": "简洁亲切",
+    "initial_draft": {
+      "title": "字幕编辑小指南",
+      "shots": [
+        {
+          "visual": "标题卡",
+          "hold_seconds": 3,
+          "lines": [
+            {
+              "text": "想给画面加点表达？",
+              "source_id": null,
+              "fact_id": null
+            }
+          ]
+        },
+        {
+          "visual": "字幕编辑界面示意",
+          "hold_seconds": 38,
+          "lines": [
+            {
+              "text": "支持手动编辑字幕。",
+              "source_id": "P01",
+              "fact_id": "F01"
+            }
+          ]
+        },
+        {
+          "visual": "结束卡",
+          "hold_seconds": 3,
+          "lines": [
+            {
+              "text": "试试字幕编辑吧。",
+              "source_id": null,
+              "fact_id": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "trace": [
+    {
+      "step": 1,
+      "kind": "model_error",
+      "summary": "GLM HTTP 429; check account/model/quota; response body omitted",
+      "transport_events": [
+        {
+          "attempt": 1,
+          "status": 429,
+          "provider_error_code": "1305"
+        },
+        {
+          "attempt": 2,
+          "status": 429,
+          "provider_error_code": "1305"
+        },
+        {
+          "attempt": 3,
+          "status": 429,
+          "provider_error_code": "1305"
+        }
+      ]
+    }
+  ],
+  "status": "failed",
+  "reason": "GLM HTTP 429; check account/model/quota; response body omitted",
+  "tool_calls": 0,
+  "model_calls": 1,
+  "finished_at": "2026-10-29T13:14:48.337410+00:00",
+  "script": {
+    "title": "字幕编辑小指南",
+    "shots": [
+      {
+        "visual": "标题卡",
+        "hold_seconds": 3,
+        "lines": [
+          {
+            "text": "想给画面加点表达？",
+            "source_id": null,
+            "fact_id": null
+          }
+        ]
+      },
+      {
+        "visual": "字幕编辑界面示意",
+        "hold_seconds": 38,
+        "lines": [
+          {
+            "text": "支持手动编辑字幕。",
+            "source_id": "P01",
+            "fact_id": "F01"
+          }
+        ]
+      },
+      {
+        "visual": "结束卡",
+        "hold_seconds": 3,
+        "lines": [
+          {
+            "text": "试试字幕编辑吧。",
+            "source_id": null,
+            "fact_id": null
+          }
+        ]
+      }
+    ]
+  },
+  "duration": null,
+  "rule_check": null,
+  "harness": {
+    "injected_failures": {},
+    "case": "over_duration",
+    "initial_draft_supplied": true
+  }
+}

@@ -63,7 +63,7 @@ def run(request, provider, data_dir, max_calls=16, failures=None):
 必须检索事实。产品句逐字使用检索到的 fact.text 并附 source_id/fact_id；source_id 是文档 id，不能填 null。例如 {"text":"支持手动编辑字幕。","source_id":"P01","fact_id":"F01"}，但须先实际检索到 P01。
 其他文案只用规则 neutral_lines 或 titles，引用填 null。不能通过删除所有产品句来规避事实检查，至少保留一条受支持产品事实。
 标题从 titles 中选择；画面从 visuals 中选择。audience/platform/style 用于这些允许选项的取舍，当前版本不支持任意创作文案。
-如果有 initial_draft，先 set_script 保存并检查它，再根据实际工具反馈修订；不要直接替换初稿跳过验证。
+如果有 initial_draft，它已载入当前脚本，必须先调用 estimate_duration 观察初稿时长，再根据反馈调用 set_script 修改。不能直接替换初稿跳过验证。
 可以改写检索。工具失败后自主决定有限重试或结束；没有资料时请求补充，禁止无依据完成。
 生成或修改后调用 estimate_duration 和 check_script；超时则修改旁白、分镜或停留时间后复查。
 超时时先充分缩减再估算，不必为已知超时的版本反复调用品牌检查。可以留出时长余量，避免仅缩减很小差值。

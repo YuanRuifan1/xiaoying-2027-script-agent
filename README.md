@@ -78,4 +78,6 @@ python scripts/check.py
 
 ## GitHub 交付
 
-目标账号 `YuanRuifan1`，计划创建公开仓库 `xiaoying-2027-script-agent`。发布前执行测试、敏感信息扫描并完成本机 GitHub 授权。仓库 URL 和最终 commit SHA 以推送后核验结果为准，不能把计划地址当成已提交。
+公开仓库：[YuanRuifan1/xiaoying-2027-script-agent](https://github.com/YuanRuifan1/xiaoying-2027-script-agent)。提交题号为第 4 题。最终 SHA 使用 `git rev-parse HEAD` 获取，并与远程 main 核对；后续修改必须更新提交 SHA。
+
+干净副本复现结果见 [clean-reproduction.json](examples/test-results/clean-reproduction.json)。`python scripts/reproduce_clean.py` 会从当前已提交版本导出干净代码，运行测试及离线 CLI，不携带 `.env`、虚拟环境或本地安装包。记录的 source_commit 指向实际被验证的版本。

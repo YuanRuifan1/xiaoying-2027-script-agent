@@ -52,6 +52,10 @@ class Tools:
         self.request = copy.deepcopy(request)
         positive(request["target_seconds"], "target_seconds")
         self.script = None
+        self.initial_estimated = "initial_draft" not in request
+        if "initial_draft" in request:
+            validate_script(request["initial_draft"])
+            self.script = copy.deepcopy(request["initial_draft"])
         self.retrieved = {}
         self.duration = None
         self.check = None
@@ -86,6 +90,8 @@ class Tools:
         return {"ok": True, "documents": docs, "count": len(docs), "synthetic": True}
 
     def set_script(self, script, reason):
+        if not self.initial_estimated:
+            raise ValueError("initial draft is already loaded; call estimate_duration before editing it")
         validate_script(script)
         self.script = copy.deepcopy(script)
         self.duration = self.check = None
@@ -104,10 +110,12 @@ class Tools:
             shots.append({"shot": i, "speech_units": units, "speech_seconds": round(spoken, 2), "seconds": seconds})
         total = round(sum(s["seconds"] for s in shots), 2)
         self.duration = {"ok": True, "script_hash": fingerprint(self.script), "shots": shots,
+                         "is_initial_draft_estimate": not self.initial_estimated,
                          "total_seconds": total, "target_seconds": self.request["target_seconds"],
                          "passed": total <= self.request["target_seconds"],
                          "excess_seconds": round(max(0, total - self.request["target_seconds"]), 2),
                          "method": f"sum(max(speech_units/{self.rules['speech_units_per_second']}, hold_seconds)); estimated only"}
+        self.initial_estimated = True
         return copy.deepcopy(self.duration)
 
     def check_script(self, reason):

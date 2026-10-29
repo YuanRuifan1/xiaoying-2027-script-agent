@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-10-29T13:05:20.619040+00:00",
+  "source_commit": "672c467c756bc8e0c0cd3d411cc4afe955ecf780",
+  "no_env_file": true,
+  "tests": {
+    "timestamp": "2026-10-29T13:05:20.308146+00:00",
+    "python": "3.12.3",
+    "tests_run": 26,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": true
+  },
+  "cli_exit_code": 0,
+  "cli_status": "completed",
+  "passed": true
+}

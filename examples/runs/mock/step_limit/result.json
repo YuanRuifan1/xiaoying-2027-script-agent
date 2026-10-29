@@ -1,7 +1,7 @@
 {
   "provider": "mock",
   "model": "offline-fixed-policy-v1",
-  "started_at": "2026-10-29T13:04:45.692631+00:00",
+  "started_at": "2026-10-29T13:11:07.543449+00:00",
   "max_tool_calls": 2,
   "input": {
     "theme": "字幕编辑",
@@ -110,7 +110,7 @@
   "reason": "tool_call_limit_reached",
   "tool_calls": 2,
   "model_calls": 2,
-  "finished_at": "2026-10-29T13:04:45.692631+00:00",
+  "finished_at": "2026-10-29T13:11:07.544977+00:00",
   "script": {
     "title": "字幕编辑小指南",
     "shots": [

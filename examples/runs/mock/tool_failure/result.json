@@ -1,7 +1,7 @@
 {
   "provider": "mock",
   "model": "offline-fixed-policy-v1",
-  "started_at": "2026-10-29T13:04:45.682278+00:00",
+  "started_at": "2026-10-29T13:11:07.518208+00:00",
   "max_tool_calls": 16,
   "input": {
     "theme": "字幕编辑",
@@ -51,7 +51,7 @@
   "reason": "离线策略观察到工具错误，保留已有结果并停止。",
   "tool_calls": 2,
   "model_calls": 2,
-  "finished_at": "2026-10-29T13:04:45.682278+00:00",
+  "finished_at": "2026-10-29T13:11:07.520943+00:00",
   "script": null,
   "duration": null,
   "rule_check": null,

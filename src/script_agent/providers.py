@@ -120,7 +120,10 @@ class MockProvider:
             if not last["count"]:
                 name, args = "finish", {"status": "needs_input", "reason": "无匹配产品资料，请补充资料。"}
             else:
-                name, args = "set_script", {"script": copy.deepcopy(self.request.get("initial_draft") or sample_script()), "reason": reason}
+                if "initial_draft" in self.request:
+                    name, args = "estimate_duration", {"reason": reason}
+                else:
+                    name, args = "set_script", {"script": sample_script(), "reason": reason}
         elif last_name == "set_script":
             name, args = "estimate_duration", {"reason": reason}
         elif last_name == "estimate_duration" and not last["passed"]:

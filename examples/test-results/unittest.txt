@@ -15,6 +15,7 @@ test_document_changes_affect_validation (test_agent.ToolTests.test_document_chan
 test_duration_is_sum_of_concurrent_visual_and_speech (test_agent.ToolTests.test_duration_is_sum_of_concurrent_visual_and_speech) ... ok
 test_forged_claim_with_valid_id_rejected (test_agent.ToolTests.test_forged_claim_with_valid_id_rejected) ... ok
 test_hash_blocks_out_of_band_mutation (test_agent.ToolTests.test_hash_blocks_out_of_band_mutation) ... ok
+test_initial_draft_must_be_observed_before_edit (test_agent.ToolTests.test_initial_draft_must_be_observed_before_edit) ... ok
 test_injected_failure_does_not_claim_success (test_agent.ToolTests.test_injected_failure_does_not_claim_success) ... ok
 test_script_revision_invalidates_both_checks (test_agent.ToolTests.test_script_revision_invalidates_both_checks) ... ok
 test_speech_cannot_be_hidden_by_short_hold (test_agent.ToolTests.test_speech_cannot_be_hidden_by_short_hold) ... ok
@@ -26,6 +27,6 @@ test_http_auth_error_not_retried_or_leaked (test_agent.TransportTests.test_http_
 test_rate_limit_retry_is_bounded_and_recorded (test_agent.TransportTests.test_rate_limit_retry_is_bounded_and_recorded) ... ok
 
 ----------------------------------------------------------------------
-Ran 26 tests in 0.034s
+Ran 27 tests in 0.059s
 
 OK

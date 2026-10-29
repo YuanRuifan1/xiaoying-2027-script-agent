@@ -112,6 +112,16 @@ class ToolTests(unittest.TestCase):
         self.assertFalse(self.tools.execute("publish", {})["ok"])
         self.assertFalse(self.tools.execute("estimate_duration", {"reason": "test", "target_seconds": 100})["ok"])
 
+    def test_initial_draft_must_be_observed_before_edit(self):
+        req = request()
+        req["initial_draft"] = sample_script(long=True)
+        tools = Tools(ROOT / "data", req)
+        self.assertFalse(tools.execute("set_script", {"script": sample_script(), "reason": "test"})["ok"])
+        baseline = tools.estimate_duration("test")
+        self.assertEqual(baseline["total_seconds"], 44)
+        self.assertTrue(baseline["is_initial_draft_estimate"])
+        self.assertTrue(tools.execute("set_script", {"script": sample_script(), "reason": "test"})["ok"])
+
     def test_unchecked_extra_script_fields_rejected(self):
         script = sample_script()
         script["unverified_claim"] = "unsupported text"
