@@ -1,0 +1,96 @@
+# 短视频脚本
+
+> 产品资料为虚构；时长为规则估算。
+
+状态：completed
+
+说明：脚本通过时长估算和品牌规则检查，27秒/30秒目标，两条产品事实正确引用，无违规
+
+运行模式：real / glm-4.7
+
+## 字幕编辑小指南
+
+| 分镜 | 画面 | 旁白/字幕 | 来源 | 预计秒数 |
+|---|---|---|---|---|
+| 1 | 标题卡 | 想给画面加点表达？ | 非产品主张 | 3 |
+| 2 | 字幕编辑界面示意 | 来看看字幕编辑。 支持手动编辑字幕。 | P01/F01 | 7 |
+| 3 | 字体颜色设置界面示意 | 选择你喜欢的表达方式。 可以调整字幕的字体和颜色。 | P01/F02 | 7 |
+| 4 | MP4 导出界面示意 | 让创意留在画面里。 试试字幕编辑吧。 | 非产品主张 | 7 |
+| 5 | 结束卡 | 字幕编辑小指南 | 非产品主张 | 3 |
+
+## 时长检查
+
+```json
+{
+  "ok": true,
+  "script_hash": "f7db125e115f970a064ed869769efb7567edf0b94a301292a13b7837957c8f7f",
+  "shots": [
+    {
+      "shot": 1,
+      "speech_units": 8,
+      "speech_seconds": 2.0,
+      "seconds": 3
+    },
+    {
+      "shot": 2,
+      "speech_units": 15,
+      "speech_seconds": 3.75,
+      "seconds": 7
+    },
+    {
+      "shot": 3,
+      "speech_units": 22,
+      "speech_seconds": 5.5,
+      "seconds": 7
+    },
+    {
+      "shot": 4,
+      "speech_units": 15,
+      "speech_seconds": 3.75,
+      "seconds": 7
+    },
+    {
+      "shot": 5,
+      "speech_units": 7,
+      "speech_seconds": 1.75,
+      "seconds": 3
+    }
+  ],
+  "is_initial_draft_estimate": false,
+  "total_seconds": 27,
+  "target_seconds": 30,
+  "passed": true,
+  "excess_seconds": 0,
+  "method": "sum(max(speech_units/4, hold_seconds)); estimated only"
+}
+```
+
+## 规则检查、引用及风险
+
+```json
+{
+  "ok": true,
+  "script_hash": "f7db125e115f970a064ed869769efb7567edf0b94a301292a13b7837957c8f7f",
+  "passed": true,
+  "issues": [],
+  "citations": [
+    {
+      "shot": 2,
+      "line": 2,
+      "source_id": "P01",
+      "fact_id": "F01",
+      "quote": "支持手动编辑字幕。",
+      "version": "2026-10-29"
+    },
+    {
+      "shot": 3,
+      "line": 2,
+      "source_id": "P01",
+      "fact_id": "F02",
+      "quote": "可以调整字幕的字体和颜色。",
+      "version": "2026-10-29"
+    }
+  ],
+  "scope": "exact approved facts and controlled copy; not a general semantic verifier"
+}
+```

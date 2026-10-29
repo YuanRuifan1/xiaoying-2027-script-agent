@@ -11,5 +11,27 @@
     "真实配音时长测量",
     "候选人独立审阅和复现",
     "免费模型限流下的超时修订真实成功验证"
+  ],
+  "followups": [
+    {
+      "type": "user_authorized_paid_model_retest",
+      "model": "glm-4.7",
+      "started_at": "2026-10-29T13:33:34.351496+00:00",
+      "finished_at": "2026-10-29T13:34:48.594988+00:00",
+      "cases": [
+        {
+          "case": "normal",
+          "status": "completed",
+          "seconds": 27
+        },
+        {
+          "case": "over_duration",
+          "status": "completed",
+          "seconds": 26
+        }
+      ],
+      "resolved_gap": "真实模型观察超时反馈并修订、重新检查后成功完成",
+      "scope": "追加验证保留原始免费模型失败记录；候选人净投入时间仍未统计。"
+    }
   ]
 }

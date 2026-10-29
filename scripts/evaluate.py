@@ -44,7 +44,27 @@ rows.extend(["", "## 失败与限制", "",
 rows.extend(["## 其他有效证据", "",
              "无素材场景的一次较早真实运行成功返回 needs_input：[结果](../examples/runs/glm47_attempt/no_material/result.json) / [Trace](../examples/runs/glm47_attempt/no_material/trace.jsonl)。模型先检索，观察到零条资料后请求补充。后续同输入仍可能遭遇服务限流，上表如实列出最近一次结果。", "",
              "`examples/runs/glm/over_duration_preemptive_edit/` 是模型先修改后检查的旧运行，不能单独证明超时反馈后的修订。最终代码已要求先观察初稿，后续复现请看上表 over_duration 的实际步骤。", "",
-             "较早的真实超时反馈路径：[结果](../examples/runs/glm/over_duration_429_failure/result.json) / [Trace](../examples/runs/glm/over_duration_429_failure/trace.jsonl)。工具依次返回 44、34、31 秒，模型确实据反馈修订，但仍未满足 30 秒上限，随后因模型服务限流明确失败。最终三次有界复测也保留在 over_duration_final_attempt_1..3，不声称超时修订已获得真实成功验证。", "",
+             "较早的免费模型真实超时反馈路径：[结果](../examples/runs/glm/over_duration_429_failure/result.json) / [Trace](../examples/runs/glm/over_duration_429_failure/trace.jsonl)。工具依次返回 44、34、31 秒，模型确实据反馈修订，但仍未满足 30 秒上限，随后因模型服务限流明确失败。免费模型的三次有界复测也保留在 over_duration_final_attempt_1..3，均未获得超时修订成功验证。付费模型追加结果见下节（如已运行）。", "",
              "干净代码副本的 [复现报告](../examples/test-results/clean-reproduction.json) 包含被验证的代码 commit、测试数量和离线 CLI 结果。实际用时记录见 [worklog.json](../examples/worklog.json)。", ""])
+paid_cases = []
+for case in ("normal", "over_duration"):
+    path = ROOT / f"examples/runs/glm_paid/{case}/result.json"
+    if path.exists():
+        paid_cases.append((case, json.loads(path.read_text(encoding="utf-8"))))
+if paid_cases:
+    rows.extend(["## 付费模型追加验证", "", "候选人明确授权付费模型复测后，切换 GLM-4.7。Agent 代码、提示词、输入和规则不因切换而修改；旧免费模型结果保留。此次小样本只能证明所记录的执行，不代表稳定成功率或付费必然消除限流。", "",
+                 "| 场景 | 模型 | 状态 | 工具调用 | 实际估算反馈（秒） | 证据 |", "|---|---|---|---|---|---|"])
+    for case, result in paid_cases:
+        steps = [s for s in result["trace"] if s.get("kind") == "tool"]
+        estimates = [str(s["observation"]["total_seconds"]) + ("（通过）" if s["observation"]["passed"] else "（超时）")
+                     for s in steps if s["tool"] == "estimate_duration" and s["observation"].get("ok")]
+        base = f"../examples/runs/glm_paid/{case}"
+        rows.append(f"| {case} | {result['model']} | {result['status']} | {result['tool_calls']} | {' → '.join(estimates) or '无'} | [结果]({base}/result.json) / [Trace]({base}/trace.jsonl) / [脚本]({base}/script.md) |")
+    rows.extend(["", "真实动作路径：", ""])
+    for case, result in paid_cases:
+        sequence = " → ".join(s["tool"] + ("[未通过]" if s["observation"].get("passed") is False else "[错误]" if not s["observation"].get("ok") else "")
+                               for s in result["trace"] if s.get("kind") == "tool")
+        rows.append(f"- **{case}**：{sequence}；最终 `{result['status']}`。")
+    rows.append("")
 (ROOT / "docs/03-evaluation.md").write_text("\n".join(rows), encoding="utf-8")
 print("Updated docs/03-evaluation.md from saved evidence")

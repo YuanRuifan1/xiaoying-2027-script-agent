@@ -33,10 +33,23 @@ $env:PYTHONPATH = "$PWD\src"
 python -m script_agent --provider glm --input examples/inputs/normal.json --output private-runs/real
 ```
 
-默认 `glm-4.7-flash`，不自动切换付费模型。模型是否仍免费、账户可用性和限流以智谱控制台为准。
+配置模板默认 `glm-4.7-flash`，不自动切换付费模型。模型是否仍免费、账户可用性和限流以智谱控制台为准。
 进程环境变量优先于 `.env`。不需要密钥即可运行离线入口。真实请求使用 HTTPS 和官方接口；密钥仅用于请求头，不存入运行记录。
 
 GLM 参考：[官方免费模型系列与工具支持](https://docs.bigmodel.cn/cn/guide/models/free/glm-4.7-flash)、[函数调用协议](https://docs.bigmodel.cn/cn/guide/capabilities/function-calling)、[接口文档](https://docs.bigmodel.cn/api-reference/模型-api/对话补全)。查阅日期 2026-10-29。
+
+经候选人授权后，另用付费 `glm-4.7` 复测正常生成和超时修订：均 completed，分别为 27 秒和 44→26 秒。两次运行共 11 次模型请求均返回 HTTP 200。这是小样本结果，不是稳定成功率保证；[实际结果与 Trace](docs/03-evaluation.md#付费模型追加验证) 保存在 `examples/runs/glm_paid/`。模型能力参考 [GLM-4.7 官方文档](https://docs.bigmodel.cn/cn/guide/models/text/glm-4.7)。
+
+使用付费模型复现（需可用账户余额；只在明确选择后调用）：
+
+```powershell
+$env:GLM_MODEL = 'glm-4.7'
+$env:PYTHONPATH = "$PWD\src"
+.\.venv\Scripts\python.exe -m script_agent --provider glm --input examples/inputs/normal.json --output private-runs/paid-normal
+.\.venv\Scripts\python.exe -m script_agent --provider glm --input examples/inputs/over_duration.json --output private-runs/paid-over-duration
+```
+
+也可在本地 `.env` 将 `GLM_MODEL` 设为 `glm-4.7`。进程中已有同名环境变量时，以进程值为准。切换模型不需要修改 Agent 代码或提示词。
 
 ## 输入和输出
 

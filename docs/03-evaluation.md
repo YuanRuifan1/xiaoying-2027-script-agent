@@ -54,6 +54,20 @@ normal 应完成并通过两项检查；missing 应列出缺失项；no_material
 
 `examples/runs/glm/over_duration_preemptive_edit/` 是模型先修改后检查的旧运行，不能单独证明超时反馈后的修订。最终代码已要求先观察初稿，后续复现请看上表 over_duration 的实际步骤。
 
-较早的真实超时反馈路径：[结果](../examples/runs/glm/over_duration_429_failure/result.json) / [Trace](../examples/runs/glm/over_duration_429_failure/trace.jsonl)。工具依次返回 44、34、31 秒，模型确实据反馈修订，但仍未满足 30 秒上限，随后因模型服务限流明确失败。最终三次有界复测也保留在 over_duration_final_attempt_1..3，不声称超时修订已获得真实成功验证。
+较早的免费模型真实超时反馈路径：[结果](../examples/runs/glm/over_duration_429_failure/result.json) / [Trace](../examples/runs/glm/over_duration_429_failure/trace.jsonl)。工具依次返回 44、34、31 秒，模型确实据反馈修订，但仍未满足 30 秒上限，随后因模型服务限流明确失败。免费模型的三次有界复测也保留在 over_duration_final_attempt_1..3，均未获得超时修订成功验证。付费模型追加结果见下节（如已运行）。
 
 干净代码副本的 [复现报告](../examples/test-results/clean-reproduction.json) 包含被验证的代码 commit、测试数量和离线 CLI 结果。实际用时记录见 [worklog.json](../examples/worklog.json)。
+
+## 付费模型追加验证
+
+候选人明确授权付费模型复测后，切换 GLM-4.7。Agent 代码、提示词、输入和规则不因切换而修改；旧免费模型结果保留。此次小样本只能证明所记录的执行，不代表稳定成功率或付费必然消除限流。
+
+| 场景 | 模型 | 状态 | 工具调用 | 实际估算反馈（秒） | 证据 |
+|---|---|---|---|---|---|
+| normal | glm-4.7 | completed | 5 | 27（通过） | [结果](../examples/runs/glm_paid/normal/result.json) / [Trace](../examples/runs/glm_paid/normal/trace.jsonl) / [脚本](../examples/runs/glm_paid/normal/script.md) |
+| over_duration | glm-4.7 | completed | 6 | 44（超时） → 26（通过） | [结果](../examples/runs/glm_paid/over_duration/result.json) / [Trace](../examples/runs/glm_paid/over_duration/trace.jsonl) / [脚本](../examples/runs/glm_paid/over_duration/script.md) |
+
+真实动作路径：
+
+- **normal**：search_materials → set_script → estimate_duration → check_script → finish；最终 `completed`。
+- **over_duration**：estimate_duration[未通过] → search_materials → set_script → estimate_duration → check_script → finish；最终 `completed`。
