@@ -1,0 +1,2 @@
+{"step": 1, "kind": "tool", "tool": "search_materials", "arguments": {"query": "全息投影", "reason": "离线固定策略，仅验证工程流程。"}, "decision_basis": "离线固定策略，仅验证工程流程。", "observation": {"ok": true, "documents": [], "count": 0, "synthetic": true}, "usage": null, "transport_events": []}
+{"step": 2, "kind": "tool", "tool": "finish", "arguments": {"status": "needs_input", "reason": "无匹配产品资料，请补充资料。"}, "decision_basis": "无匹配产品资料，请补充资料。", "observation": {"ok": true, "terminal": true, "status": "needs_input", "reason": "无匹配产品资料，请补充资料。"}, "usage": null, "transport_events": []}

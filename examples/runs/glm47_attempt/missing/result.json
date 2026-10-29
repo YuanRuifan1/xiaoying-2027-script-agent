@@ -1,0 +1,28 @@
+{
+  "provider": "real",
+  "model": "glm-4.7-flash",
+  "started_at": "2026-10-29T08:04:24.806415+00:00",
+  "max_tool_calls": 16,
+  "input": {
+    "theme": "字幕编辑",
+    "audience": "新手创作者",
+    "platform": "短视频平台",
+    "style": "简洁亲切"
+  },
+  "trace": [],
+  "status": "needs_input",
+  "reason": "缺少必要字段",
+  "missing_fields": [
+    "target_seconds"
+  ],
+  "script": null,
+  "tool_calls": 0,
+  "model_calls": 0,
+  "duration": null,
+  "rule_check": null,
+  "harness": {
+    "injected_failures": {},
+    "case": "missing",
+    "initial_draft_supplied": false
+  }
+}

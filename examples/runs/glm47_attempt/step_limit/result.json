@@ -1,0 +1,84 @@
+{
+  "provider": "real",
+  "model": "glm-4.7-flash",
+  "started_at": "2026-10-29T08:07:20.586871+00:00",
+  "max_tool_calls": 2,
+  "input": {
+    "theme": "字幕编辑",
+    "audience": "刚开始制作短视频的创作者",
+    "platform": "短视频平台",
+    "target_seconds": 30,
+    "style": "简洁亲切"
+  },
+  "trace": [
+    {
+      "step": 1,
+      "kind": "tool",
+      "tool": "search_materials",
+      "arguments": {
+        "query": "字幕编辑功能",
+        "reason": "检索字幕编辑产品功能事实用于脚本文案"
+      },
+      "decision_basis": "检索字幕编辑产品功能事实用于脚本文案",
+      "observation": {
+        "ok": true,
+        "documents": [],
+        "count": 0,
+        "synthetic": true
+      },
+      "usage": {
+        "completion_tokens": 46,
+        "completion_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "prompt_tokens": 1245,
+        "prompt_tokens_details": {
+          "cached_tokens": 1215
+        },
+        "total_tokens": 1291
+      },
+      "transport_events": [
+        {
+          "attempt": 1,
+          "status": 429
+        },
+        {
+          "attempt": 2,
+          "status": 200
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "kind": "model_error",
+      "summary": "GLM HTTP 429; check account/model/quota; response body omitted",
+      "transport_events": [
+        {
+          "attempt": 1,
+          "status": 429
+        },
+        {
+          "attempt": 2,
+          "status": 429
+        },
+        {
+          "attempt": 3,
+          "status": 429
+        }
+      ]
+    }
+  ],
+  "status": "failed",
+  "reason": "GLM HTTP 429; check account/model/quota; response body omitted",
+  "tool_calls": 1,
+  "model_calls": 2,
+  "finished_at": "2026-10-29T08:07:50.421840+00:00",
+  "script": null,
+  "duration": null,
+  "rule_check": null,
+  "harness": {
+    "injected_failures": {},
+    "case": "step_limit",
+    "initial_draft_supplied": false
+  }
+}

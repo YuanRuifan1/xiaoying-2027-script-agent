@@ -1,0 +1,2 @@
+{"step": 1, "kind": "protocol_error", "summary": "parallel tool calls rejected; no tools executed"}
+{"step": 2, "kind": "model_error", "summary": "GLM transport or response error (URLError); details omitted", "transport_events": [{"attempt": 1, "status": 429}]}

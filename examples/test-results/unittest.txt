@@ -1,0 +1,31 @@
+test_invalid_input (test_agent.AgentTests.test_invalid_input) ... ok
+test_limit_never_claims_completion (test_agent.AgentTests.test_limit_never_claims_completion) ... ok
+test_missing_required_information (test_agent.AgentTests.test_missing_required_information) ... ok
+test_model_error_is_recorded (test_agent.AgentTests.test_model_error_is_recorded) ... ok
+test_no_material (test_agent.AgentTests.test_no_material) ... ok
+test_normal_offline_flow (test_agent.AgentTests.test_normal_offline_flow) ... ok
+test_over_duration_repair_and_recheck (test_agent.AgentTests.test_over_duration_repair_and_recheck) ... ok
+test_partial_script_retained_after_failure (test_agent.AgentTests.test_partial_script_retained_after_failure) ... ok
+test_plain_text_cannot_bypass_tools_or_loop_bound (test_agent.AgentTests.test_plain_text_cannot_bypass_tools_or_loop_bound) ... ok
+test_premature_completion_is_blocked (test_agent.AgentTests.test_premature_completion_is_blocked) ... ok
+test_approved_title_can_be_used_as_nonfactual_caption (test_agent.ToolTests.test_approved_title_can_be_used_as_nonfactual_caption) ... ok
+test_bad_numbers_and_shapes_are_rejected (test_agent.ToolTests.test_bad_numbers_and_shapes_are_rejected) ... ok
+test_correct_citation_contains_original_and_version (test_agent.ToolTests.test_correct_citation_contains_original_and_version) ... ok
+test_document_changes_affect_validation (test_agent.ToolTests.test_document_changes_affect_validation) ... ok
+test_duration_is_sum_of_concurrent_visual_and_speech (test_agent.ToolTests.test_duration_is_sum_of_concurrent_visual_and_speech) ... ok
+test_forged_claim_with_valid_id_rejected (test_agent.ToolTests.test_forged_claim_with_valid_id_rejected) ... ok
+test_hash_blocks_out_of_band_mutation (test_agent.ToolTests.test_hash_blocks_out_of_band_mutation) ... ok
+test_injected_failure_does_not_claim_success (test_agent.ToolTests.test_injected_failure_does_not_claim_success) ... ok
+test_script_revision_invalidates_both_checks (test_agent.ToolTests.test_script_revision_invalidates_both_checks) ... ok
+test_speech_cannot_be_hidden_by_short_hold (test_agent.ToolTests.test_speech_cannot_be_hidden_by_short_hold) ... ok
+test_unchecked_extra_script_fields_rejected (test_agent.ToolTests.test_unchecked_extra_script_fields_rejected) ... ok
+test_unknown_tool_and_extra_arguments_rejected (test_agent.ToolTests.test_unknown_tool_and_extra_arguments_rejected) ... ok
+test_unretrieved_fact_rejected (test_agent.ToolTests.test_unretrieved_fact_rejected) ... ok
+test_credentials_and_internal_reasoning_not_in_message (test_agent.TransportTests.test_credentials_and_internal_reasoning_not_in_message) ... ok
+test_http_auth_error_not_retried_or_leaked (test_agent.TransportTests.test_http_auth_error_not_retried_or_leaked) ... ok
+test_rate_limit_retry_is_bounded_and_recorded (test_agent.TransportTests.test_rate_limit_retry_is_bounded_and_recorded) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.034s
+
+OK

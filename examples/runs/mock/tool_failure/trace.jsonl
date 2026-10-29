@@ -1,0 +1,2 @@
+{"step": 1, "kind": "tool", "tool": "search_materials", "arguments": {"query": "字幕编辑", "reason": "离线固定策略，仅验证工程流程。"}, "decision_basis": "离线固定策略，仅验证工程流程。", "observation": {"ok": false, "error": "injected_tool_failure", "retryable": true}, "usage": null, "transport_events": []}
+{"step": 2, "kind": "tool", "tool": "finish", "arguments": {"status": "failed", "reason": "离线策略观察到工具错误，保留已有结果并停止。"}, "decision_basis": "离线策略观察到工具错误，保留已有结果并停止。", "observation": {"ok": true, "terminal": true, "status": "failed", "reason": "离线策略观察到工具错误，保留已有结果并停止。"}, "usage": null, "transport_events": []}
